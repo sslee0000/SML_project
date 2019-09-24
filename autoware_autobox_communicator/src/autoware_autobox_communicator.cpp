@@ -40,10 +40,10 @@ StandStill : 비상정
 
 void AutowareAutoboxCommunicator::Run()
 {   
-    std::thread can_thread(&AutoboxManager::Run, &autobox_manager_);
+    std::thread autobox_thread(&AutoboxManager::Run, &autobox_manager_);
     autobox_manager_.read();
     ros::spin();
-    can_thread.join();
+    autobox_thread.join();
 
     return;
 }
